@@ -1,16 +1,12 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import "../work.css";
 import "../header.css";
 import FullpageProviderWork from "@/components/fullpageProviderWork";
 import { Header } from "@/components/header";
 import { HeaderNavigation } from "@/components/headerNavigation";
-import Magentic from "@/components/ui/magentic";
-import { redirect } from "next/navigation";
-import { links } from "@/data/data";
 import { Footer } from "@/components/contactSection/footer";
+import Image from "next/image";
 
 // ✅ SEO uchun metadata
 export const metadata = {
@@ -24,7 +20,7 @@ export const metadata = {
     url: "https://smkweb.com/about",
     images: [
       {
-        url: "/images/preview.jpg", // agar yo'q bo‘lsa /images/preview.jpg yozing
+        url: "https://smkweb.com/images/preview.jpg",
         width: 1200,
         height: 630,
         alt: "SMK Web — Biz haqimizda",
@@ -35,34 +31,37 @@ export const metadata = {
 };
 
 export default function AboutPage() {
-  const [delay, setDelay] = useState(15);
-  let timer: NodeJS.Timeout;
-
-  useEffect(() => {
-    if (delay !== 0) {
-      timer = setTimeout(() => {
-        setDelay(delay - 1);
-      }, 1000);
-    } else {
-      redirect(links.linkedin);
-    }
-
-    return () => clearTimeout(timer);
-  }, [delay]);
-
   return (
     <>
       <Header color="Light" />
-      <div className="darkGradient flex h-screen w-screen flex-col items-center justify-center px-paddingX py-paddingY text-center text-lg text-colorSecondaryLight md:text-3xl">
-        About sahifasi hali tayyor emas, siz {delay} soniyada LinkedIn sahifaga yo‘naltirilasiz.
-        <br />
-        <span className="mt-5 text-xl text-colorLight">
-          {delay} sekund ichida
-        </span>
-        <Link href={links.home} className="mt-5 underline">
-          Bosh sahifaga qaytish
-        </Link>
-        <Footer className="bottom-0" />
+      <div className="min-h-screen w-full px-paddingX py-paddingY bg-black text-white flex flex-col items-center text-center gap-10">
+        <h1 className="text-4xl md:text-6xl font-bold">Biz haqimizda</h1>
+
+        <p className="max-w-3xl text-lg md:text-xl text-gray-300">
+          SMK Web — bu zamonaviy veb yechimlar taqdim etuvchi kompaniya. Biz Samarkand va butun
+          O‘zbekistonda mijozlarga web, mobil va dizayn xizmatlarini taqdim etamiz. Bizning
+          maqsadimiz — raqamli texnologiyalar orqali bizneslarni rivojlantirish.
+        </p>
+
+        <Image
+          src="/images/preview.jpg"
+          alt="SMK Web jamoasi"
+          width={800}
+          height={400}
+          className="rounded-xl shadow-xl"
+        />
+
+        <div className="max-w-2xl text-gray-400 text-base md:text-lg">
+          <p>
+            Biz jamoamiz bilan 2020-yildan beri ishlaymiz. Loyihalarimiz orasida ko‘plab davlat va
+            xususiy tashkilotlar mavjud. Har bir mijoz biz uchun muhim.
+          </p>
+          <p className="mt-4">
+            SMK Web — Sizning ishonchli IT hamkoringiz. Biz bilan bog‘laning!
+          </p>
+        </div>
+
+        <Footer className="mt-10" />
       </div>
     </>
   );
