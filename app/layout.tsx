@@ -30,24 +30,24 @@ export const metadata: Metadata = {
     "разработка 3D сайтов, 3D веб-дизайн, CEM системы, разработка мобильных приложений, IT компания Узбекистан",
   robots: "index, follow",
   alternates: {
-    canonical: "https://smkweb.uz",
+    canonical: "https://smkweb.com",
     languages: {
-      "ru-RU": "https://smkweb.uz/ru",
-      "uz-UZ": "https://smkweb.uz/uz",
-      "en-US": "https://smkweb.uz/en",
+      "ru-RU": "https://smkweb.com",
+      "uz-UZ": "https://smkweb.com",
+      "en-US": "https://smkweb.com",
     },
   },
   openGraph: {
     type: "website",
     locale: "ru_RU",
-    url: "https://smkweb.uz",
+    url: "https://smkweb.com",
     siteName: "SMKWeb",
     title: "SMKWeb | 3D сайты, CEM системы и мобильные приложения в Узбекистане",
     description:
       "Профессиональная разработка 3D веб-сайтов, CEM систем и мобильных приложений в Ташкенте, Самарканде, Бухаре и других городах.",
     images: [
       {
-        url: "https://smkweb.uz/images/og-image.jpg",
+        url: "https://smkweb.com/images/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "SMKWeb - IT компания в Узбекистане",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     title: "SMKWeb | Разработка 3D сайтов и мобильных приложений",
     description:
       "Ведущая IT компания в Узбекистане по разработке 3D сайтов, CEM систем и мобильных приложений.",
-    images: ["https://smkweb.uz/images/twitter-image.jpg"],
+    images: ["https://smkweb.com/images/twitter-image.jpg"],
   },
   authors: [{ name: "SMKWeb" }],
   publisher: "SMKWeb",
@@ -98,7 +98,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "SMKWeb",
-              url: "https://smkweb.uz",
+              url: "https://smkweb.com",
               logo: "/sprinter.jpg",
               description: "Разработка 3D сайтов, CEM систем и мобильных приложений в Узбекистане",
               address: {

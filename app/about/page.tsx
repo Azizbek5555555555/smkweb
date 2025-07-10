@@ -21,7 +21,7 @@ export const metadata = {
     title: "Biz haqimizda | SMK Web",
     description:
       "Samarkanddagi SMK Web jamoasi, tajribamiz, missiyamiz va kelajak rejalari haqida.",
-    url: "https://smkweb.uz/about",
+    url: "https://smkweb.com/about",
     images: [
       {
         url: "/images/preview.jpg", // agar yo'q bo‘lsa /images/preview.jpg yozing
