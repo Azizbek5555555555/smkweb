@@ -54,16 +54,16 @@ export function PricingCard({ item, index, onContactClick }: PricingCardProps): 
   }, []);
 
   return (
-    <div 
-      ref={cardRef}
-      className={`pricing-card relative overflow-hidden rounded-2xl transition-all duration-300 ${
-        item.popular 
-          ? "bg-colorDark text-colorLight border-2 border-colorLight" 
-          : "bg-colorSecondaryHalfLight text-colorDark"
-      }`}
-    >
+
+      <div 
+        ref={cardRef}
+        className={`pricing-card relative overflow-hidden rounded-2xl transition-all duration-300 bg-colorSecondaryHalfLight text-colorDark border-2 ${
+          item.popular ? "border-colorDark" : "border-transparent"
+        }`}
+      >
+
       {item.popular && (
-        <div className="absolute top-0 right-0 bg-colorLight text-colorDark text-xs font-bold py-1 px-3 rounded-bl-lg">
+        <div className="absolute top-0 right-0 bg-colorDark text-white text-xs font-bold py-1 px-3 rounded-bl-lg">
           Популярный
         </div>
       )}
@@ -75,18 +75,19 @@ export function PricingCard({ item, index, onContactClick }: PricingCardProps): 
         }}
         strength={30}
       >
-        <h3 className="text-[1.3rem] md:text-[1.5rem] font-semibold mb-3 scrambleText">
+
+        <h3 className="text-[1.3rem] md:text-[1.5rem] font-semibold mb-3 scrambleText text-black">
           {item.title}
         </h3>
-        
+              
         {item.price ? (
           <div className="mb-4">
-            <span className="text-[2rem] font-bold">{item.price}</span>
-            <span className="text-sm opacity-70"> / проект</span>
+            <span className="text-[2rem] font-bold text-black">{item.price}</span>
+            <span className="text-sm opacity-70 text-black"> / проект</span>
           </div>
         ) : (
           <div className="mb-4">
-            <span className="text-lg font-medium">Индивидуальная цена</span>
+            <span className="text-lg font-medium text-black">Индивидуальная цена</span>
           </div>
         )}
         
@@ -110,15 +111,15 @@ export function PricingCard({ item, index, onContactClick }: PricingCardProps): 
         </ul>
         
         <button 
-          onClick={onContactClick}
-          className={`py-3 px-4 rounded-lg font-medium transition-all duration-300 ${
-            item.popular 
-              ? "bg-colorLight text-colorDark hover:bg-colorSecondaryHalfDark" 
-              : "bg-colorDark text-colorLight hover:bg-colorSecondaryDark"
-          }`}
-        >
-          {item.buttonText}
-        </button>
+            onClick={onContactClick}
+            className={`py-3 px-4 rounded-lg font-medium transition-all duration-300 ${
+              item.popular 
+                ? "bg-colorDark text-white hover:bg-colorSecondaryHalfLight" 
+                : "bg-colorDark text-colorLight hover:bg-colorSecondaryDark"
+            }`}
+            >
+            {item.buttonText}
+          </button>
       </Magentic>
     </div>
   );

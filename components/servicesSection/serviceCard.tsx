@@ -68,7 +68,7 @@ export function ServiceCard({ service, index }: ServiceCardProps): JSX.Element {
           </div>
         </div>
         
-        <h3 className="text-[1.3rem] md:text-[1.5rem] font-semibold mb-3 scrambleText group-hover:text-colorDark transition-colors duration-300">
+        <h3 className="text-xl font-bold mb-2 text-black">
           {service.title}
         </h3>
         

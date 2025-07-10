@@ -43,16 +43,22 @@ export function WorkSection({
         className={`fullpage__slide 
         `}
       >
+        
         <a
-          className={`image image--works image--works${
-            index + 1
-          } anime rounded-3xl `}
+          className={`image image--works image--works${index + 1} anime rounded-3xl `}
           target="_blank"
           href={item.link}
           style={{
-            background: `url(${item.imageLink}) center center / contain no-repeat`,
+            background: `url(${item.imageLink}) center center / cover no-repeat`,
+            width: "60vw",
+            height: "70vh",
+            display: "block",
+            marginRight: "40px", // chapdan 40px bo‘shliq
+            marginLeft: "auto",
+            borderRadius: "1.5rem", // 24px, Tailwind rounded-3xl
           }}
         >
+
           <div className="image__over">
             <div className="image__cover">1</div>
             <div className="image__cover">2</div>

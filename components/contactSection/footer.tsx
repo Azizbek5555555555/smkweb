@@ -31,7 +31,7 @@ export function Footer({ className }: { className?: string }) {
     >
       <FooterGroup
         className="hidden md:block"
-        title="COPYRIGHT"
+        title=""
         links={[{ href: "", text: "Copyright © SMKWEB 2025." }]}
       />
       <FooterGroup

@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@fullpage/react-fullpage": "^0.1.40",
@@ -27,6 +29,7 @@
     "lottie-web": "^5.12.2",
     "lucide-react": "^0.309.0",
     "next": "^14.2.0",
+    "next-sitemap": "^4.2.3",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.50.1",

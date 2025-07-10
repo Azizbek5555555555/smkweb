@@ -1,0 +1,80 @@
+.dot-anim {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #0e0e0e;
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+.dot-anim-1 {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: dot-move-1 3s linear infinite;
+}
+.dot-anim-2 {
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: dot-move-2 3s linear infinite;
+}
+.dot-anim-3 {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: dot-move-3 3s linear infinite;
+}
+.dot-anim-4 {
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: dot-move-4 3s linear infinite;
+}
+
+@keyframes dot-move-1 {
+  0% { top: 0; left: 50%; }
+  25% { top: 5%; left: 40%; }
+  50% { top: 25%; left: 50%; }
+  75% { top: 40%; left: 40%; }
+  100% { top: 0; left: 50%; }
+}
+@keyframes dot-move-2 {
+  0% { right: 0; top: 50%; }
+  25% { right: 5%; top: 20%; }
+  50% { right: 25%; top: 0; }
+  75% { right: 40%; top: 20%; }
+  100% { right: 0; top: 50%; }
+}
+@keyframes dot-move-3 {
+  0% { bottom: 0; left: 50%; }
+  25% { bottom: 5%; left: 20%; }
+  50% { bottom: 25%; left: 0; }
+  75% { bottom: 40%; left: 20%; }
+  100% { bottom: 0; left: 50%; }
+}
+@keyframes dot-move-4 {
+  0% { left: 0; top: 50%; }
+  25% { left: 5%; top: 40%; }
+  50% { left: 25%; top: 50%; }
+  75% { left: 40%; top: 40%; }
+  100% { left: 0; top: 50%; }
+}
+
+.dot-spin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: #222;
+  border-radius: 50%;
+  opacity: 0.7;
+  transform-origin: 0 -48px;
+  animation: dot-spin-anim 6s linear infinite;
+}
+
+@keyframes dot-spin-anim {
+  0% { transform: rotate(var(--angle, 0deg)) translateY(-48px);}
+  100% { transform: rotate(calc(var(--angle, 0deg) + 360deg)) translateY(-48px);}
+}

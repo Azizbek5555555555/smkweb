@@ -59,7 +59,7 @@ export function HeroButton({}) {
             ref={rotating}
             width={100}
             height={100}
-            src="/sprinter.jpg"
+            src="/logobek.png"
             alt=""
           />
         </div>

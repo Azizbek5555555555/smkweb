@@ -4,6 +4,7 @@ import Magentic from "../ui/magentic";
 import { gsap } from "gsap";
 import { isDesktop } from "@/lib/utils";
 import ServiceCard from "./serviceCard";
+import styles from './servicesWrapper.module.css';
 // import { ServiceCard } from "./serviceCard";
 
 interface ServicesWrapperProps {}
@@ -29,46 +30,47 @@ export function ServicesWrapper({}: ServicesWrapperProps): JSX.Element {
     {
       title: "Премиум Веб-сайты",
       description: "Создаем эксклюзивные веб-сайты с безупречным дизайном, адаптированные под все устройства.",
-      icon: "/internet.png"
+      icon: "https://img.icons8.com/ios-filled/50/ffffff/internet.png"
     },
     {
       title: "3D Веб-сайты",
       description: "Разрабатываем интерактивные 3D веб-сайты, которые запоминаются и выделяют ваш бренд.",
-      icon: "/3d.png"
+      icon: "https://img.icons8.com/ios-filled/50/ffffff/3d.png"
     },
     {
       title: "Веб-приложения",
       description: "Создаем масштабируемые веб-приложения с интуитивным интерфейсом и высокой производительностью.",
-      icon: "/website-builder.png"
+      icon: "https://img.icons8.com/ios-filled/50/ffffff/web.png"
     },
     {
       title: "Мобильные приложения",
       description: "Разрабатываем нативные и кроссплатформенные мобильные приложения для iOS и Android.",
-      icon: "/message.png"
+      icon: "https://img.icons8.com/ios-filled/50/ffffff/smartphone-tablet.png"
     },
     {
       title: "CRM для школ",
       description: "Внедряем специализированные CRM-системы для управления образовательным процессом.",
-      icon: "/crm.png"
+      icon: "https://img.icons8.com/ios-filled/50/ffffff/school.png"
     },
     {
       title: "CRM для бухгалтерии",
       description: "Разрабатываем CRM-системы для автоматизации бухгалтерского учета и финансовой отчетности.",
-      icon: "/bank.png"
+      icon: "https://img.icons8.com/ios-filled/50/ffffff/accounting.png"
     },
     {
       title: "Telegram боты",
       description: "Создаем умных Telegram ботов для автоматизации бизнес-процессов и коммуникации с клиентами.",
-      icon: "/bot.png"
+      icon: "https://img.icons8.com/ios-filled/50/ffffff/telegram-app.png"
     },
     {
       title: "SEO оптимизация",
       description: "Повышаем видимость вашего сайта в поисковых системах с помощью комплексной SEO-оптимизации.",
-      icon: "/seo.png"
+      icon: "https://img.icons8.com/ios-filled/50/ffffff/star--v1.png"
     }
   ];
   
   const servicesRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
   
   useEffect(() => {
     if (!isDesktop()) {
@@ -80,6 +82,21 @@ export function ServicesWrapper({}: ServicesWrapperProps): JSX.Element {
     
     // GSAP animation for services
     if (servicesRef.current) {
+      // ...useEffect ichida mavjud kodlardan keyin...
+        if (headingRef.current) {
+          gsap.fromTo(
+            headingRef.current,
+            { y: 40, opacity: 0, scale: 0.95 },
+            {
+              y: 0,
+              opacity: 1,
+              scale: 1,
+              duration: 1,
+              ease: "power3.out",
+              delay: 0.2,
+            }
+          );
+        }
       gsap.from(".service-card", {
         y: 50,
         opacity: 1,
@@ -180,7 +197,19 @@ export function ServicesWrapper({}: ServicesWrapperProps): JSX.Element {
       <div className="anime relative w-full">
         <div className="flex flex-col items-center justify-center mb-[3rem]">
           <div className="anime">
-            <h2 className="services_heading mask text-center text-[2.5rem] md:text-[3.5rem] font-bold">{text.main}</h2>
+            <div className="relative flex items-center justify-center">
+                {/* Nuqtachalar */}
+                {/* <span className={`${styles["dot-anim"]} ${styles["dot-anim-1"]}`}></span>
+                <span className={`${styles["dot-anim"]} ${styles["dot-anim-2"]}`}></span>
+                <span className={`${styles["dot-anim"]} ${styles["dot-anim-3"]}`}></span>
+                <span className={`${styles["dot-anim"]} ${styles["dot-anim-4"]}`}></span> */}
+                <h2
+                  ref={headingRef}
+                  className="services_heading mask text-center text-[2.5rem] md:text-[3.5rem] font-bold"
+                >
+                  {text.main}
+                </h2>
+              </div>
           </div>
         </div>
         
