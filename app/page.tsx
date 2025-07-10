@@ -9,7 +9,7 @@ import "./index.css";
 
 export default function HomePage() {
   return (
-    <>
+    <> 
       <Head>
         {/* 🔹 Title: Ko‘p tilli + sinonim */}
         <title>SMK Web — IT компания в Самарканде | IT kompaniya Samarkandda | IT Services Uzbekistan</title>
