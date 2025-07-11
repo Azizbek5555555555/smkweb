@@ -1,5 +1,4 @@
-// Create a file called serviceCard.tsx
-
+// serviceCard.tsx
 import React, { useRef, useEffect } from "react";
 import Magentic from "../ui/magentic";
 import { gsap } from "gsap";
@@ -19,10 +18,9 @@ export function ServiceCard({ service, index }: ServiceCardProps): JSX.Element {
   
   useEffect(() => {
     if (isDesktop() && cardRef.current) {
-      // Create hover animation
       const card = cardRef.current;
       
-      card.addEventListener("mouseenter", () => {
+      const handleMouseEnter = () => {
         gsap.to(card, {
           y: -10,
           scale: 1.02,
@@ -30,9 +28,9 @@ export function ServiceCard({ service, index }: ServiceCardProps): JSX.Element {
           duration: 0.3,
           ease: "power2.out",
         });
-      });
+      };
       
-      card.addEventListener("mouseleave", () => {
+      const handleMouseLeave = () => {
         gsap.to(card, {
           y: 0,
           scale: 1,
@@ -40,12 +38,15 @@ export function ServiceCard({ service, index }: ServiceCardProps): JSX.Element {
           duration: 0.3,
           ease: "power2.out",
         });
-      });
+      };
+      
+      card.addEventListener("mouseenter", handleMouseEnter);
+      card.addEventListener("mouseleave", handleMouseLeave);
       
       // Cleanup event listeners
       return () => {
-        card.removeEventListener("mouseenter", () => {});
-        card.removeEventListener("mouseleave", () => {});
+        card.removeEventListener("mouseenter", handleMouseEnter);
+        card.removeEventListener("mouseleave", handleMouseLeave);
       };
     }
   }, []);
@@ -53,48 +54,28 @@ export function ServiceCard({ service, index }: ServiceCardProps): JSX.Element {
   return (
     <div 
       ref={cardRef}
-      className="service-card group overflow-hidden rounded-2xl bg-colorSecondaryHalfLight transition-all duration-300 relative"
+      className="service-card group overflow-hidden rounded-2xl bg-colorSecondaryHalfLight transition-all duration-300 relative h-full min-h-[220px] flex flex-col"
     >
       <Magentic
-        className="p-6 h-full flex flex-col"
+        className="p-4 h-full flex flex-col flex-grow"
         scrambleParams={{
           text: service.title,
         }}
         strength={30}
       >
-        <div className="w-14 h-14 mb-5 text-colorDark">
-          <div className="w-full h-full rounded-full bg-colorSecondaryHalfDark flex items-center justify-center p-3 group-hover:scale-110 transition-transform duration-300">
+        <div className="w-12 h-12 mb-4 text-colorDark flex-shrink-0">
+          <div className="w-full h-full rounded-full bg-colorSecondaryHalfDark flex items-center justify-center p-2.5 group-hover:scale-110 transition-transform duration-300">
             <img src={service.icon} alt={service.title} className="w-full h-full object-contain" />
           </div>
         </div>
         
-        <h3 className="text-xl font-bold mb-2 text-black">
+        <h3 className="text-lg font-bold mb-2 text-black flex-shrink-0">
           {service.title}
         </h3>
         
-        <p className="text-colorSecondaryDark text-[0.9rem] md:text-[1rem] flex-grow">
+        <p className="text-colorSecondaryDark text-[0.85rem] md:text-[0.9rem] flex-grow leading-relaxed">
           {service.description}
         </p>
-        
-        {/* <div className="mt-4 flex items-center text-[0.9rem] font-medium text-colorDark opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-2 group-hover:translate-y-0">
-          <span className="mr-2">Подробнее</span>
-          <svg 
-            width="14" 
-            height="14" 
-            viewBox="0 0 14 14" 
-            fill="none" 
-            xmlns="http://www.w3.org/2000/svg"
-            className="transform -rotate-45"
-          >
-            <path 
-              d="M1 13L13 1M13 1H1M13 1V13" 
-              stroke="currentColor" 
-              strokeWidth="2" 
-              strokeLinecap="round" 
-              strokeLinejoin="round"
-            />
-          </svg>
-        </div> */}
         
         <div className="absolute bottom-0 left-0 w-0 h-1 bg-colorDark group-hover:w-full transition-all duration-500"></div>
       </Magentic>

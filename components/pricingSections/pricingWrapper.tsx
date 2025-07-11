@@ -5,8 +5,6 @@ import { gsap } from "gsap";
 import { isDesktop } from "@/lib/utils";
 import { PricingCard } from "./pricingCard";
 import { ContactForm } from "./contactForm";
-// import { PricingCard } from "./pricingCard";
-// import { ContactForm } from "./contactForm";
 
 interface PricingWrapperProps {}
 
@@ -88,7 +86,7 @@ export function PricingWrapper({}: PricingWrapperProps): JSX.Element {
       buttonText: "Заказать"
     },
     {
-      title: "Мобильное Приложение",
+      title: "Мобиль Приложение",
       price: null,
       features: [
         "iOS и Android",
@@ -246,8 +244,8 @@ export function PricingWrapper({}: PricingWrapperProps): JSX.Element {
           </div>
         </div>
         
-        {/* Pricing grid */}
-        <div ref={pricingRef} className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 w-full">
+        {/* Pricing grid with improved responsive design and better card sizing */}
+        <div ref={pricingRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 md:gap-4 w-full max-w-[1500px] mx-auto">
           {pricingItems.map((item, index) => (
             <PricingCard 
               key={index} 
@@ -259,7 +257,7 @@ export function PricingWrapper({}: PricingWrapperProps): JSX.Element {
         </div>
         
         {/* Pricing note */}
-        <div className="mt-8 text-center text-colorSecondaryDark text-sm">
+        <div className="mt-8 mb-16 text-center text-colorSecondaryDark text-sm px-4">
           <p>* Цены указаны в качестве отправной точки и могут варьироваться в зависимости от сложности проекта</p>
         </div>
       </div>

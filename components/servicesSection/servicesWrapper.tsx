@@ -2,10 +2,23 @@
 import React, { useEffect, useState, useRef } from "react";
 import Magentic from "../ui/magentic";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { isDesktop } from "@/lib/utils";
 import ServiceCard from "./serviceCard";
 import styles from './servicesWrapper.module.css';
-// import { ServiceCard } from "./serviceCard";
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
+
+// Register ScrambleTextPlugin if available
+// ✅ Avval ScrollTrigger pluginni ro‘yxatdan o‘tkazamiz
+gsap.registerPlugin(ScrollTrigger);
+
+// ✅ Keyin ScrambleTextPlugin mavjudligini JS darajasida aniq tekshiramiz
+if (typeof window !== "undefined" && "ScrambleTextPlugin" in gsap) {
+  gsap.registerPlugin((gsap as any).ScrambleTextPlugin);
+}
+
 
 interface ServicesWrapperProps {}
 
@@ -71,6 +84,7 @@ export function ServicesWrapper({}: ServicesWrapperProps): JSX.Element {
   
   const servicesRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
     if (!isDesktop()) {
@@ -81,24 +95,30 @@ export function ServicesWrapper({}: ServicesWrapperProps): JSX.Element {
     }
     
     // GSAP animation for services
-    if (servicesRef.current) {
-      // ...useEffect ichida mavjud kodlardan keyin...
-        if (headingRef.current) {
-          gsap.fromTo(
-            headingRef.current,
-            { y: 40, opacity: 0, scale: 0.95 },
-            {
-              y: 0,
-              opacity: 1,
-              scale: 1,
-              duration: 1,
-              ease: "power3.out",
-              delay: 0.2,
-            }
-          );
+    if (servicesRef.current && headingRef.current) {
+      // Animate heading
+      gsap.fromTo(
+        headingRef.current,
+        { y: 40, opacity: 0, scale: 0.95 },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 1,
+          ease: "power3.out",
+          delay: 0.2,
         }
-      gsap.from(".service-card", {
+      );
+
+      // Set initial state for service cards
+      gsap.set(".service-card", {
         y: 50,
+        opacity: 0,
+      });
+
+      // Animate service cards
+      gsap.to(".service-card", {
+        y: 0,
         opacity: 1,
         stagger: 0.1,
         duration: 0.8,
@@ -106,13 +126,23 @@ export function ServicesWrapper({}: ServicesWrapperProps): JSX.Element {
         scrollTrigger: {
           trigger: servicesRef.current,
           start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play none none reverse",
         }
       });
     }
+
+    // Cleanup function
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
   }, []);
 
   return (
-    <main className="flex h-full w-full max-w-maxWidth grow flex-col justify-center text-[5.8vw] md:text-[clamp(20px,_1vw_+_14px,_32px)]">
+    <main 
+      ref={containerRef}
+      className="flex h-full w-full max-w-maxWidth grow flex-col justify-center text-[5.8vw] md:text-[clamp(20px,_1vw_+_14px,_32px)] pb-16 md:pb-20"
+    >
       <div className="anime relative flex flex-col gap-[1em] md:flex-row-reverse md:gap-[2em]">
         <p
           className="text-left leading-[1.3] text-colorSecondaryDark md:w-[100%]"
@@ -194,15 +224,10 @@ export function ServicesWrapper({}: ServicesWrapperProps): JSX.Element {
       
       <div className="customBorder anime mx-auto my-[1.5em] h-[2px] w-[calc(100%_-_20px)] self-start rounded-full bg-colorSecondaryLight opacity-30"></div>
 
-      <div className="anime relative w-full">
-        <div className="flex flex-col items-center justify-center mb-[3rem]">
+      <div className="anime relative w-full min-h-fit mb-8">
+        <div className="flex flex-col items-center justify-center mb-[2.5rem]">
           <div className="anime">
             <div className="relative flex items-center justify-center">
-                {/* Nuqtachalar */}
-                {/* <span className={`${styles["dot-anim"]} ${styles["dot-anim-1"]}`}></span>
-                <span className={`${styles["dot-anim"]} ${styles["dot-anim-2"]}`}></span>
-                <span className={`${styles["dot-anim"]} ${styles["dot-anim-3"]}`}></span>
-                <span className={`${styles["dot-anim"]} ${styles["dot-anim-4"]}`}></span> */}
                 <h2
                   ref={headingRef}
                   className="services_heading mask text-center text-[2.5rem] md:text-[3.5rem] font-bold"
@@ -213,13 +238,14 @@ export function ServicesWrapper({}: ServicesWrapperProps): JSX.Element {
           </div>
         </div>
         
-        <div ref={servicesRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div 
+          ref={servicesRef} 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 min-h-fit pb-8 -mt-8"
+        >
           {services.map((service, index) => (
             <ServiceCard key={index} service={service} index={index} />
           ))}
         </div>
-        <br />
-        <br />
       </div>
     </main>
   );
