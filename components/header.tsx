@@ -1,3 +1,5 @@
+"use client";
+
 import React, { use, useEffect, useRef, useState } from "react";
 import Magentic from "./ui/magentic";
 import { gsap } from "gsap";

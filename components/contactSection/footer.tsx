@@ -1,7 +1,10 @@
+"use client";
+
 import { FooterGroup } from "@/components/contactSection/footerGroup";
 import { links } from "@/data/data";
 import { cn, getJoinedDate } from "@/lib/utils";
 import React, { useEffect, useRef, useState } from "react";
+
 export function Footer({ className }: { className?: string }) {
   const [currentTime, setCurrentTime] = useState("");
 
