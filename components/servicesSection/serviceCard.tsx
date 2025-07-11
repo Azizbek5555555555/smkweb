@@ -54,7 +54,7 @@ export function ServiceCard({ service, index }: ServiceCardProps): JSX.Element {
   return (
     <div 
       ref={cardRef}
-      className="service-card group overflow-hidden rounded-2xl bg-colorSecondaryHalfLight transition-all duration-300 relative h-full min-h-[220px] flex flex-col"
+      className="service-card group overflow-hidden rounded-2xl bg-colorSecondaryHalfLight transition-all duration-300 relative h-full min-h-[220px] flex flex-col opacity-100"
     >
       <Magentic
         className="p-4 h-full flex flex-col flex-grow"
@@ -65,7 +65,12 @@ export function ServiceCard({ service, index }: ServiceCardProps): JSX.Element {
       >
         <div className="w-12 h-12 mb-4 text-colorDark flex-shrink-0">
           <div className="w-full h-full rounded-full bg-colorSecondaryHalfDark flex items-center justify-center p-2.5 group-hover:scale-110 transition-transform duration-300">
-            <img src={service.icon} alt={service.title} className="w-full h-full object-contain" />
+            <img 
+              src={service.icon} 
+              alt={service.title} 
+              className="w-full h-full object-contain"
+              loading="lazy"
+            />
           </div>
         </div>
         

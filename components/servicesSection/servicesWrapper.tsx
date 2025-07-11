@@ -11,14 +11,9 @@ import styles from './servicesWrapper.module.css';
 gsap.registerPlugin(ScrollTrigger);
 
 // Register ScrambleTextPlugin if available
-// ✅ Avval ScrollTrigger pluginni ro‘yxatdan o‘tkazamiz
-gsap.registerPlugin(ScrollTrigger);
-
-// ✅ Keyin ScrambleTextPlugin mavjudligini JS darajasida aniq tekshiramiz
 if (typeof window !== "undefined" && "ScrambleTextPlugin" in gsap) {
   gsap.registerPlugin((gsap as any).ScrambleTextPlugin);
 }
-
 
 interface ServicesWrapperProps {}
 
@@ -110,24 +105,60 @@ export function ServicesWrapper({}: ServicesWrapperProps): JSX.Element {
         }
       );
 
+      // Get all service cards within the services container
+      const serviceCards = servicesRef.current.querySelectorAll(".service-card");
+      
       // Set initial state for service cards
-      gsap.set(".service-card", {
+      gsap.set(serviceCards, {
         y: 50,
         opacity: 0,
+        scale: 0.9,
       });
 
-      // Animate service cards
-      gsap.to(".service-card", {
-        y: 0,
-        opacity: 1,
-        stagger: 0.1,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: servicesRef.current,
-          start: "top 80%",
-          end: "bottom 20%",
-          toggleActions: "play none none reverse",
+      // Create ScrollTrigger for service cards animation
+      ScrollTrigger.create({
+        trigger: servicesRef.current,
+        start: "top 85%",
+        end: "bottom 15%",
+        onEnter: () => {
+          gsap.to(serviceCards, {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            stagger: 0.1,
+            duration: 0.8,
+            ease: "power3.out",
+          });
+        },
+        onLeave: () => {
+          gsap.to(serviceCards, {
+            y: 50,
+            opacity: 0,
+            scale: 0.9,
+            stagger: 0.05,
+            duration: 0.5,
+            ease: "power2.in",
+          });
+        },
+        onEnterBack: () => {
+          gsap.to(serviceCards, {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            stagger: 0.1,
+            duration: 0.8,
+            ease: "power3.out",
+          });
+        },
+        onLeaveBack: () => {
+          gsap.to(serviceCards, {
+            y: 50,
+            opacity: 0,
+            scale: 0.9,
+            stagger: 0.05,
+            duration: 0.5,
+            ease: "power2.in",
+          });
         }
       });
     }
