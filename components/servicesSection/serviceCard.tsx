@@ -1,5 +1,5 @@
 // serviceCard.tsx
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Magentic from "../ui/magentic";
 import { gsap } from "gsap";
 import { isDesktop } from "@/lib/utils";
@@ -15,8 +15,11 @@ interface ServiceCardProps {
 
 export function ServiceCard({ service, index }: ServiceCardProps): JSX.Element {
   const cardRef = useRef<HTMLDivElement>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
   
   useEffect(() => {
+    setIsLoaded(true);
+    
     if (isDesktop() && cardRef.current) {
       const card = cardRef.current;
       
@@ -54,7 +57,13 @@ export function ServiceCard({ service, index }: ServiceCardProps): JSX.Element {
   return (
     <div 
       ref={cardRef}
-      className="service-card group overflow-hidden rounded-2xl bg-colorSecondaryHalfLight transition-all duration-300 relative h-full min-h-[220px] flex flex-col opacity-100"
+      className={`service-card group overflow-hidden rounded-2xl bg-colorSecondaryHalfLight transition-all duration-300 relative h-full min-h-[220px] flex flex-col ${
+        isLoaded ? 'opacity-100' : 'opacity-0'
+      }`}
+      style={{
+        transform: 'translateY(0px)',
+        opacity: 1
+      }}
     >
       <Magentic
         className="p-4 h-full flex flex-col flex-grow"
@@ -70,6 +79,8 @@ export function ServiceCard({ service, index }: ServiceCardProps): JSX.Element {
               alt={service.title} 
               className="w-full h-full object-contain"
               loading="lazy"
+              onLoad={() => setIsLoaded(true)}
+              onError={() => setIsLoaded(true)}
             />
           </div>
         </div>
