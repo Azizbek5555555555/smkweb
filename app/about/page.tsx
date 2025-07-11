@@ -1,4 +1,4 @@
-"use client";
+// Remove this line: "use client";
 
 import "../work.css";
 import "../header.css";
@@ -12,7 +12,7 @@ import Image from "next/image";
 export const metadata = {
   title: "Biz haqimizda | SMK Web",
   description:
-    "SMK Web haqida to‘liq ma’lumot. Samarkanddagi yetakchi IT kompaniya, jamoamiz, maqsadlarimiz va xizmatlarimiz haqida bilib oling.",
+    "SMK Web haqida to'liq ma'lumot. Samarkanddagi yetakchi IT kompaniya, jamoamiz, maqsadlarimiz va xizmatlarimiz haqida bilib oling.",
   openGraph: {
     title: "Biz haqimizda | SMK Web",
     description:
@@ -39,7 +39,7 @@ export default function AboutPage() {
 
         <p className="max-w-3xl text-lg md:text-xl text-gray-300">
           SMK Web — bu zamonaviy veb yechimlar taqdim etuvchi kompaniya. Biz Samarkand va butun
-          O‘zbekistonda mijozlarga web, mobil va dizayn xizmatlarini taqdim etamiz. Bizning
+          O'zbekistonda mijozlarga web, mobil va dizayn xizmatlarini taqdim etamiz. Bizning
           maqsadimiz — raqamli texnologiyalar orqali bizneslarni rivojlantirish.
         </p>
 
@@ -53,11 +53,11 @@ export default function AboutPage() {
 
         <div className="max-w-2xl text-gray-400 text-base md:text-lg">
           <p>
-            Biz jamoamiz bilan 2020-yildan beri ishlaymiz. Loyihalarimiz orasida ko‘plab davlat va
+            Biz jamoamiz bilan 2020-yildan beri ishlaymiz. Loyihalarimiz orasida ko'plab davlat va
             xususiy tashkilotlar mavjud. Har bir mijoz biz uchun muhim.
           </p>
           <p className="mt-4">
-            SMK Web — Sizning ishonchli IT hamkoringiz. Biz bilan bog‘laning!
+            SMK Web — Sizning ishonchli IT hamkoringiz. Biz bilan bog'laning!
           </p>
         </div>
 
