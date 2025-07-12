@@ -50,7 +50,7 @@ export function WorkSection({
           href={item.link}
           style={{
             background: `url(${item.imageLink}) center center / cover no-repeat`,
-            width: "60vw",
+            width: "55vw",
             height: "70vh",
             display: "block",
             marginRight: "40px", // chapdan 40px bo‘shliq
