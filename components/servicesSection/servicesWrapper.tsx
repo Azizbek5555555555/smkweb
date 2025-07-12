@@ -94,10 +94,9 @@ export function ServicesWrapper({}: ServicesWrapperProps): JSX.Element {
       // Animate heading
       gsap.fromTo(
         headingRef.current,
-        { y: 40, opacity: 0, scale: 0.95 },
+        { y: 40, scale: 0.95 },
         {
           y: 0,
-          opacity: 1,
           scale: 1,
           duration: 1,
           ease: "power3.out",
@@ -105,62 +104,31 @@ export function ServicesWrapper({}: ServicesWrapperProps): JSX.Element {
         }
       );
 
-      // Get all service cards within the services container
+      // Get all service cards
       const serviceCards = servicesRef.current.querySelectorAll(".service-card");
       
-      // Set initial state for service cards
-      gsap.set(serviceCards, {
-        y: 50,
-        opacity: 0,
-        scale: 0.9,
-      });
+      if (serviceCards.length > 0) {
+        // Set initial state for service cards - only transform, no opacity
+        gsap.set(serviceCards, {
+          y: 50,
+          scale: 0.9,
+        });
 
-      // Create ScrollTrigger for service cards animation
-      ScrollTrigger.create({
-        trigger: servicesRef.current,
-        start: "top 85%",
-        end: "bottom 15%",
-        onEnter: () => {
-          gsap.to(serviceCards, {
-            y: 0,
-            opacity: 1,
-            scale: 1,
-            stagger: 0.1,
-            duration: 0.8,
-            ease: "power3.out",
-          });
-        },
-        onLeave: () => {
-          gsap.to(serviceCards, {
-            y: 50,
-            opacity: 0,
-            scale: 0.9,
-            stagger: 0.05,
-            duration: 0.5,
-            ease: "power2.in",
-          });
-        },
-        onEnterBack: () => {
-          gsap.to(serviceCards, {
-            y: 0,
-            opacity: 1,
-            scale: 1,
-            stagger: 0.1,
-            duration: 0.8,
-            ease: "power3.out",
-          });
-        },
-        onLeaveBack: () => {
-          gsap.to(serviceCards, {
-            y: 50,
-            opacity: 0,
-            scale: 0.9,
-            stagger: 0.05,
-            duration: 0.5,
-            ease: "power2.in",
-          });
-        }
-      });
+        // Animate service cards on scroll
+        gsap.to(serviceCards, {
+          y: 0,
+          scale: 1,
+          stagger: 0.1,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: servicesRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse",
+          }
+        });
+      }
     }
 
     // Cleanup function
