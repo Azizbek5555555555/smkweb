@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Лендинг",
+    "description": "Современный одностраничный сайт с адаптивной вёрсткой, SEO и бесплатным хостингом.",
+    "price": "199",
+    "url": "https://smkweb.com/services/landing",
+    "category": "Сайты"
+  },
+  {
+    "title": "Стандартный Сайт",
+    "description": "Многостраничный сайт с современным дизайном, технической поддержкой и базовым функционалом.",
+    "price": "450",
+    "url": "https://smkweb.com/services/standard",
+    "category": "Сайты"
+  },
+  {
+    "title": "3D Сайт",
+    "description": "Интерактивный сайт с 3D анимациями, улучшенной SEO и премиум дизайном.",
+    "price": "599",
+    "url": "https://smkweb.com/services/3d",
+    "category": "Сайты"
+  },
+  {
+    "title": "Веб-Приложение",
+    "description": "Сложные веб-приложения с админ-панелью, API и масштабируемой архитектурой.",
+    "price": "699",
+    "url": "https://smkweb.com/services/webapp",
+    "category": "Приложения"
+  },
+  {
+    "title": "Мобильное Приложение",
+    "description": "Индивидуальная разработка под iOS и Android с публикацией и серверной интеграцией.",
+    "price": "Индивидуально",
+    "url": "https://smkweb.com/services/mobile",
+    "category": "Приложения"
+  }
+]
