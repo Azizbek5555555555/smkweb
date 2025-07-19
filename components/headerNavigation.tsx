@@ -83,6 +83,10 @@ export function HeaderNavigation() {
       href: links.work,
     },
     {
+      name: "Блог",
+      href: links.blog,
+    },
+    {
       name: "Свяжитесь с нами",
       href: links.email,
     },
