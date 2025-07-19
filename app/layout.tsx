@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans } from "next/font/google";
+// import { DM_Sans } from "next/font/google";
 import localFont from "next/font/local";
 import GoogleAnalytics from "@/app/GoogleAnalytics";
 import Script from "next/script";
@@ -11,7 +11,7 @@ import { CustomEase } from "gsap/CustomEase";
 gsap.registerPlugin(CustomEase);
 
 // Fontlar
-const dM_Sans = DM_Sans({ subsets: ["latin-ext"] });
+// const dM_Sans = DM_Sans({ subsets: ["latin-ext"] });
 const satoshi = localFont({
   src: "../font/satoshi/Satoshi-Variable.woff2",
   style: "normal",
@@ -85,10 +85,10 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
+        {/* <link
           href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap"
           rel="stylesheet"
-        />
+        /> */}
 
         {/* Schema.org mikrodata */}
         <script
