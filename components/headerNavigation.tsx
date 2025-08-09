@@ -77,19 +77,26 @@ export function HeaderNavigation() {
       name: "Главная",
       href: links.home,
     },
-
     {
       name: "Портфолио",
       href: links.work,
     },
     {
+      name: "Блог",
+      href: "/blog",
+    },
+    {
+      name: "FAQ",
+      href: "/faq",
+    },
+    {
       name: "Свяжитесь с нами",
       href: links.email,
     },
-    {
-      name: "Instagram",
-      href: links.twitter,
-    },
+    // {
+    //   name: "Instagram",
+    //   href: links.twitter,
+    // },
   ];
   return (
     <>

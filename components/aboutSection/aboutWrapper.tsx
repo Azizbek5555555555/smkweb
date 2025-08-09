@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Magentic from "../ui/magentic";
 import { gsap } from "gsap";
 import { AboutMarquee } from "./aboutMarquee";
+import { CreatorsMarquee } from "./creatorsMarquee";
 import { links } from "@/data/data";
 import TestimonialCard from "./testimonialCard";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -160,6 +161,11 @@ export function AboutWrapper({}) {
             src="/video/transcode.mp4"
           ></video>
         </div>
+      </div>
+      
+      {/* Creators Marquee Animation - positioned below video */}
+      <div className="anime w-full mt-6 md:mt-8 mb-4 md:mb-6">
+        <CreatorsMarquee />
       </div>
     </main>
   );

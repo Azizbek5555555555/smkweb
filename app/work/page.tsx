@@ -16,7 +16,7 @@ const projectsData = [
     ),
     description: "Website",
     link: "https://www.powerhighschool.uz/",
-    imageLink: "/ph.jpg",
+    imageLink: "/ph.jpg", 
   },
   {
     title: (
