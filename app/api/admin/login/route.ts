@@ -3,6 +3,9 @@ import { dbConnect } from '@/lib/db';
 import Admin from '@/lib/models/Admin';
 import jwt from 'jsonwebtoken';
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
 export async function POST(request: NextRequest) {
   try {
     await dbConnect();

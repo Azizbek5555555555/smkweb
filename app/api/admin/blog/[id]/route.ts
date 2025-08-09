@@ -3,6 +3,9 @@ import { dbConnect } from '@/lib/db';
 import Blog from '@/lib/models/Blog';
 import jwt from 'jsonwebtoken';
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+
 // Middleware to verify admin token
 const verifyToken = (request: NextRequest) => {
   const authHeader = request.headers.get('authorization');

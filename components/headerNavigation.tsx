@@ -8,6 +8,10 @@ import Magentic from "./ui/magentic";
 import { isDesktop } from "@/lib/utils";
 import { link } from "fs";
 import { links } from "@/data/data";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(CustomEase);
+}
 export function HeaderNavigation() {
   const { isMenuOpen, color } = useAppSelector((state) => state.menuReducer);
   const possibleTailwindClasses = [

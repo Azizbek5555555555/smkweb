@@ -3,6 +3,9 @@ const nextConfig = {
   images: {
     // unoptimized: true,
   },
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/i,
@@ -11,6 +14,14 @@ const nextConfig = {
     });
 
     return config;
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: '/api/:path*',
+      },
+    ];
   },
 };
 
